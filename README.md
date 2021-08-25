@@ -47,3 +47,6 @@ vagrant suspend
 # resume from disc
 vagrant resume
 ```
+
+## Access
+BOX IP: 192.168.100.100
