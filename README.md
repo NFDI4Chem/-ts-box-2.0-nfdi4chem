@@ -50,3 +50,10 @@ vagrant resume
 
 ## Access
 BOX IP: 192.168.100.100
+
+## TODO:
+* install node dependencies: npm
+* run npm applications 
+    * (first) manually
+    * (later) as services
+* webserve configs
