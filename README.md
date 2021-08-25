@@ -20,7 +20,7 @@ IN PROGRESS - NOT READY
 Run the following steps in Terminal (Linux/macOS) or GitBash (Windows):
 ```bash
 git clone https://github.com/NFDI4Chem/ts-box-2.0-nfdi4chem.git
-cd fuseki-box
+cd ts-box-2.0-nfdi4chem
 vagrant up
 ```
 `vagrant reload --provision` will re-run the Ansile playbook in the created Vagrant box

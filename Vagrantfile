@@ -2,16 +2,16 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.define "fuseki" do |fuseki|
-    fuseki.vm.box = "debian/buster64"
+  config.vm.define "tsnfdi4chem" do |tsnfdi4chem|
+    tsnfdi4chem.vm.box = "debian/buster64"
     # config.disksize.size = '30GB'
-    fuseki.ssh.insert_key = false
-    fuseki.vm.hostname = "fuseki.box"
-    fuseki.vm.synced_folder ".", "/vagrant", create: true, disabled: false
-    fuseki.vm.network :private_network, ip: "192.168.60.113"
+    tsnfdi4chem.ssh.insert_key = false
+    tsnfdi4chem.vm.hostname = "tsnfdi4chem.box"
+    tsnfdi4chem.vm.synced_folder ".", "/vagrant", create: true, disabled: false
+    tsnfdi4chem.vm.network :private_network, ip: "192.168.100.100"
 
-    fuseki.vm.provider :virtualbox do |vb|
-      vb.name = "fuseki_box"
+    tsnfdi4chem.vm.provider :virtualbox do |vb|
+      vb.name = "tsnfdi4chem_box"
       vb.memory = 4096
       vb.cpus = 2
     end
