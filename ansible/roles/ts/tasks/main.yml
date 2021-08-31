@@ -14,18 +14,30 @@
     cmd: npm install
     chdir: "/usr/local/src/frontend/"
 
-- name: frontend - npm build frontend
-  command:
-    cmd: npm run build
-    chdir: "/usr/local/src/frontend/"
 
 - name: frontend - npm build install -g serve
   command:
     cmd: npm install -g serve
     chdir: "/usr/local/src/frontend/"
 
-- name: frontend - serve 
+- name: frontend - npm build install -g serve
   command:
-    cmd: serve -s build
+    cmd: npm install -g pm2
     chdir: "/usr/local/src/frontend/"
+
+- name: frontend - npm build frontend
+  command:
+    cmd: npm run build
+    chdir: "/usr/local/src/frontend/"
+
+- name: frontend pm2 build frontend
+  command:
+    cmd: pm2 serve build 5000 --spa
+    chdir: "/usr/local/src/frontend/"
+
+
+# - name: frontend - serve 
+#   command:
+#     cmd: serve -s build
+#     chdir: "/usr/local/src/frontend/"
     

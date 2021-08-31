@@ -60,3 +60,7 @@
 - name: 6.3 /usr/local/lib/node_modules/npm as npm default
   command:
     cmd: update-alternatives --install /usr/bin/npm npm /usr/local/lib/node_modules/npm/bin/npm-cli.js 0
+
+- name: 6.4 install PM2
+  command:
+    cmd: npm install pm2 -g

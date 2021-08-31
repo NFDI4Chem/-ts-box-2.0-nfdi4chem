@@ -51,10 +51,10 @@ vagrant resume
 ## Access
 * BOX IP: http://192.168.100.100/
 * source code directory (to which git repos are cloned): `/usr/local/src/`
+* monitor services: `vagrant ssh --command "sudo pm2 list"`
 
 ## TODO:
-* install node dependencies: npm
-* run npm applications 
+* run backend 
     * (first) manually
     * (later) as services
 * webserve configs
