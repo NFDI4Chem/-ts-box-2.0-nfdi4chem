@@ -29,3 +29,34 @@
 - name: 4 pip3 executable
   command: which pip3
   register: pip3_path
+
+- name: 5.1 get nodejs 
+  get_url:
+    url: https://nodejs.org/dist/v14.17.5/node-v14.17.5-linux-x64.tar.xz
+    dest: /root
+
+- name: 5.2 unpack nodejs
+  unarchive:
+    remote_src: yes
+    src: /root/node-v14.17.5-linux-x64.tar.xz
+    dest: /root/
+
+- name: 5.3 cp node binary to /usr/local/bin
+  copy:
+    src: /root/node-v14.17.5-linux-x64/bin/node
+    dest: /usr/local/bin/node
+    mode: a+x
+    remote_src: yes
+
+- name: 6.1 download npm installer
+  get_url:
+      url: https://www.npmjs.com/install.sh
+      dest: /root
+
+- name: 6.2 run npm installer
+  command: 
+    cmd: "sh /root/install.sh"
+ 
+- name: 6.3 /usr/local/lib/node_modules/npm as npm default
+  command:
+    cmd: update-alternatives --install /usr/bin/npm npm /usr/local/lib/node_modules/npm/bin/npm-cli.js 0

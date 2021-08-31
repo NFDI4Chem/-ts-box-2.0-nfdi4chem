@@ -4,3 +4,8 @@
     - role: utils
       tags:
         - utils
+        - all
+    - role: ts
+      tags:
+        - ts
+        - all

@@ -49,7 +49,8 @@ vagrant resume
 ```
 
 ## Access
-BOX IP: 192.168.100.100
+* BOX IP: http://192.168.100.100/
+* source code directory (to which git repos are cloned): `/usr/local/src/`
 
 ## TODO:
 * install node dependencies: npm

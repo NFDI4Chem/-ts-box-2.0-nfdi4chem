@@ -1,0 +1,31 @@
+---
+- name: 1 clone ts git repos
+  git:
+    dest: "/usr/local/src/{{ item.dir }}"
+    repo: "{{ item.url }}"
+    version: master
+  loop:
+    - { url: 'https://github.com/NFDI4Chem/ts-backend-2.0-common.git', dir: 'backend' }
+    - { url: 'https://github.com/NFDI4Chem/ts-fronted-2.0-nfdi4chem.git', dir: 'frontend' }
+
+
+- name: frontend - npm install frontend dependencies
+  command:
+    cmd: npm install
+    chdir: "/usr/local/src/frontend/"
+
+- name: frontend - npm build frontend
+  command:
+    cmd: npm run build
+    chdir: "/usr/local/src/frontend/"
+
+- name: frontend - npm build install -g serve
+  command:
+    cmd: npm install -g serve
+    chdir: "/usr/local/src/frontend/"
+
+- name: frontend - serve 
+  command:
+    cmd: serve -s build
+    chdir: "/usr/local/src/frontend/"
+    
