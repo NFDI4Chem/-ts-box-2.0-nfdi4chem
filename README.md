@@ -50,6 +50,8 @@ vagrant resume
 
 ## Access
 * BOX IP: http://192.168.100.100/
+    * Frontend: http://192.168.100.100:5000/
+    * Backend: http://192.168.100.100:8000/
 * source code directory (to which git repos are cloned): `/usr/local/src/`
 * monitor services: `vagrant ssh --command "sudo pm2 list"`
 
