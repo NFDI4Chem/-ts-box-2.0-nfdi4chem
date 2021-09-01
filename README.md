@@ -1,7 +1,6 @@
 
 # NFDI4Chem Ontology Lookup Service 2.0 - Vagrant Box
 
-IN PROGRESS - NOT READY 
 
 **Installs the different software components which make up NFDI4Chem Ontology Lookup Service 2.0 in a Vagrant virtual box**, namely:
 * [ts-fronted-2.0-nfdi4chem](https://github.com/NFDI4Chem/ts-fronted-2.0-nfdi4chem)
@@ -49,14 +48,10 @@ vagrant resume
 ```
 
 ## Access
-* BOX IP: http://192.168.100.100/
+* BOX IP: http://192.168.100.100
     * Frontend: http://192.168.100.100:5000/
     * Backend: http://192.168.100.100:8000/
 * source code directory (to which git repos are cloned): `/usr/local/src/`
 * monitor services: `vagrant ssh --command "sudo pm2 list"`
 
-## TODO:
-* run backend 
-    * (first) manually
-    * (later) as services
-* webserve configs
+`curl -I  http://192.168.100.100/ts/ `

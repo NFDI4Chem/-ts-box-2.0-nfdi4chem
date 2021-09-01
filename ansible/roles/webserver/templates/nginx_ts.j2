@@ -1,6 +1,6 @@
     location {{ ts_web_path }}/ {
-        rewrite ^{{ ts_web_path }}/(.*) /$1 break; # links to /foo go to /ts/foo
-        proxy_pass http://127.0.0.1:{{ ts_port }};
+        rewrite ^{{ ts_web_path }}/(.*) /$1 break; # rewrites to /ts_web_path to /
+        proxy_pass http://127.0.0.1:{{ ts_port }};  #  proxies to ts_port
         # subs_filter_types text/html text/css text/xml;
         # subs_filter ':{{ ts_port }}' '{{ ts_web_path }}';
         proxy_set_header Host $host;
@@ -8,6 +8,8 @@
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;   
         }
 
+{% if ts_web_path|length > 0 %}
     location / {
-        rewrite ^/(.*) {{ ts_web_path }}/$1;
+        rewrite ^/(.*) {{ ts_web_path }}/$1; # rewrites / to /ts_web_path 
         }
+{% endif %}
