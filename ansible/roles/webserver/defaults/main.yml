@@ -1,0 +1,3 @@
+nginx_ts_conf: 'include/ts.conf'
+ts_web_path: ''
+ts_port: '5000'

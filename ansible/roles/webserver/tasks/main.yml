@@ -1,0 +1,44 @@
+
+---
+- name: 1 create nginx includes dir
+  file:
+    state: directory
+    path: /etc/nginx/includes/
+    mode: og+wr
+    owner: root
+    group: root
+
+- name: 2 NGINX includes config
+  template:
+    src: nginx_ts.j2
+    dest: '/etc/nginx/{{ nginx_ts_conf }}'
+    mode: og+wr
+    owner: root
+    group: root
+
+- name: 3 remove comments from NGINX site default
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    regexp: '#\s*?.*$'
+    state: absent
+
+- name: 4 insert ts conf to NGINX site default
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    insertafter: 'server_name _;'
+    line: '        include {{ nginx_ts_conf }};'
+    mode: og+wr
+    owner: root
+    group: root
+
+- name: 5 enable NGINX default config
+  file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
+    state: link
+  notify: reload_webserver
+
+- name: 6 reload NGINX
+  command: systemctl reload nginx
+
+

@@ -9,3 +9,7 @@
       tags:
         - ts
         - all
+    - role: webserver
+      tags:
+        - webserver
+        - all
