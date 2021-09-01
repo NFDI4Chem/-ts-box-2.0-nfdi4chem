@@ -22,7 +22,13 @@
     regexp: '#\s*?.*$'
     state: absent
 
-- name: 4 insert ts conf to NGINX site default
+- name: 4 remove location / from NGINX site default
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    regexp: 'location\s/(.|\n)+?\}'
+    state: absent
+
+- name: 5 insert ts conf to NGINX site default
   lineinfile:
     path: /etc/nginx/sites-available/default
     insertafter: 'server_name _;'
@@ -31,14 +37,14 @@
     owner: root
     group: root
 
-- name: 5 enable NGINX default config
+- name: 6 enable NGINX default config
   file:
     src: /etc/nginx/sites-available/default
     dest: /etc/nginx/sites-enabled/default
     state: link
   notify: reload_webserver
 
-- name: 6 reload NGINX
+- name: 7 reload NGINX
   command: systemctl reload nginx
 
 

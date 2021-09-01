@@ -4,6 +4,7 @@
     dest: "/usr/local/src/{{ item.dir }}"
     repo: "{{ item.url }}"
     version: master
+    force: yes
   loop:
     - { url: 'https://github.com/NFDI4Chem/ts-backend-2.0-common.git', dir: 'backend' }
     - { url: 'https://github.com/NFDI4Chem/ts-fronted-2.0-nfdi4chem.git', dir: 'frontend' }
