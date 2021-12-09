@@ -33,6 +33,11 @@
     cmd: npm install
     chdir: "/usr/local/src/frontend/"
 
+- name: frontend - npm install library
+  command:
+    cmd: npm install tib-ts-library
+    chdir: "/usr/local/src/frontend/"
+
 - name: frontend - npm build frontend
   command:
     cmd: npm run build
